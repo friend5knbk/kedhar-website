@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hangman Game – Python Code</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        pre {
+            background-color: #1e1e1e;
+            color: #dcdcdc;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Hangman Game – Python Code</h1>
+<p>Copy the code below and paste it into Python IDLE or any Python editor.</p>
+
+<pre>
+import time
+
+name = input("What is your name? ")
+print("Hello, " + name, "Time to play hangman!")
+print(" ")
+time.sleep(1)
+
+print("Start guessing...")
+time.sleep(0.5)
+
+word = "secret"
+guesses = ''
+turns = 10
+
+while turns > 0:
+    failed = 0
+
+    for char in word:
+        if char in guesses:
+            print(char)
+        else:
+            print("_")
+            failed += 1
+
+    if failed == 0:
+        print("You won")
+        break
+
+    guess = input("guess a character: ")
+    guesses += guess
+
+    if guess not in word:
+        turns -= 1
+        print("Wrong")
+        print("You have", turns, "more guesses")
+
+    if turns == 0:
+        print("You Lose")
+</pre>
+
+</body>
+</html>
